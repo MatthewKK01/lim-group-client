@@ -2,8 +2,25 @@ import Data from "@data/sliders/projects.json";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const ProjectsSlider = ( { projects } ) => {
+
+const ProjectsSlider = ({ projects }) => {
+    const [Projects, setProjects] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:1337/api/project?populate=*");
+                const data = await response.json();
+                setProjects(data.data);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <section className="gap project-style-one light-bg-color">
@@ -19,21 +36,21 @@ const ProjectsSlider = ( { projects } ) => {
                     {...sliderProps.projectsSlider}
                     className="swiper-container project-slider"
                 >
-                    {projects.slice(0, Data.numOfItems).map((item, key) => (
-                    <SwiperSlide key={`pjs-slide-${key}`} className="swiper-slide">
-                    <div className="project-post">
-                        <figure>
-                            <img src={item.image} alt={item.title} />
-                        </figure>
-                        <div className="project-data">
-                            <h3><Link href={`/projects/${item.id}`}>{item.title}</Link></h3>
-                            <p>{item.short}</p>
-                            <Link className="project-icon" href={`/projects/${item.id}`}>
-                                <i className="fa-solid fa-angles-right"></i>
-                            </Link>
-                        </div>
-                    </div>
-                    </SwiperSlide>
+                    {Projects.slice(0, Data.numOfItems).map((item, key) => (
+                        <SwiperSlide key={`pjs-slide-${key}`} className="swiper-slide">
+                            <div className="project-post">
+                                <figure>
+                                    <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
+                                </figure>
+                                <div className="project-data">
+                                    <h3><Link href={`/projects/${item.id}`}>{item.title}</Link></h3>
+                                    <p>{item.short}</p>
+                                    <Link className="project-icon" href={`/projects/${item.id}`}>
+                                        <i className="fa-solid fa-angles-right"></i>
+                                    </Link>
+                                </div>
+                            </div>
+                        </SwiperSlide>
                     ))}
                     <div className="swiper-pagination" />
                 </Swiper>
