@@ -3,6 +3,7 @@ import Date from '@library/date';
 import Link from "next/link";
 
 const LatestPostsSection = ( { posts } ) => {
+    const apiUrl =`http://localhost:1337`
     return (
         <section className="gap no-top blog-style-one">
             <div className="heading">
@@ -19,7 +20,7 @@ const LatestPostsSection = ( { posts } ) => {
                         <div className="blog-post">
                             <div className="blog-image">
                                 <figure>
-                                    <img src={item.image} alt={item.title} />
+                                 <img src={`${apiUrl}${item.image[0].url}`} alt={item.title} />
                                 </figure>
                                 <Link href={`/blog/${item.id}`}>
                                     <i className="fa-solid fa-angles-right" />
@@ -27,19 +28,19 @@ const LatestPostsSection = ( { posts } ) => {
                             </div>
                             <div className="blog-data">
                                 <span className="blog-date">
-                                    <Date dateString={item.date} />
+                                    <Date dateString={item.createdAt} />
                                 </span>
                                 <h2>
                                     <Link href={`/blog/${item.id}`}>{item.title}</Link>
                                 </h2>
                                 <div className="blog-author d-flex-all justify-content-start">
-                                    <div className="author-img">
+                                    {/* <div className="author-img">
                                         <figure>
                                             <img src={item.author.avatar} alt={item.author.name} />
                                         </figure>
-                                    </div>
+                                    </div> */}
                                     <div className="details">
-                                        <h3> <span>by</span> {item.author.name}</h3>
+                                        <h3> <span>by</span> Limgroup</h3>
                                     </div>
                                 </div>
                             </div>

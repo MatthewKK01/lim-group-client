@@ -190,7 +190,7 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
             <ul>
               {navItems.map((item, key) => (
                 <li key={`mobilenav-item-${key}`} className={item.classes}>
-                  <Link href={item.link} onClick={item.children != 0 ? (e) => clickedMobileMenuItemParent(e) : ""}>{item.label}</Link>
+                  <Link href={item.link}>{item.label}</Link>
 
                 </li>
               ))}

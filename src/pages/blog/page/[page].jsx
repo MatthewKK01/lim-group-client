@@ -4,7 +4,6 @@ import Pagination from '@components/Pagination'
 import PageBanner from "@components/PageBanner";
 import Layouts from "@layouts/Layouts";
 
-import { getPaginatedPostsData } from "@library/posts";
 
 export const PER_PAGE = 9
 
@@ -51,7 +50,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps( { params } ) {
     const page = Number(params?.page) || 1
-    const { posts, total } = getPaginatedPostsData( PER_PAGE, page );
+    const response = await fetch("http://localhost:1337/api/posts?populate=*")
+    const posts = await response.json();
+    const total = 10;
   
     if (!posts.length) {
       return {

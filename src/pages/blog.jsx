@@ -5,7 +5,6 @@ import Pagination from '@components/Pagination'
 import PageBanner from "@components/PageBanner";
 import Layouts from "@layouts/Layouts";
 
-import { getPaginatedPostsData } from "@library/posts";
 
 const Blog = ( { posts, totalPosts, currentPage } ) => {
   return (
@@ -41,7 +40,11 @@ const Blog = ( { posts, totalPosts, currentPage } ) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const { posts, total } = getPaginatedPostsData( PER_PAGE, 1 );
+
+
+  const response = await fetch("http://localhost:1337/api/posts?populate=*")
+  const posts = await response.json();
+  const total = 10
 
   return {
     props: {
