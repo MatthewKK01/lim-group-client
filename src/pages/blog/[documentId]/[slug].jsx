@@ -1,6 +1,5 @@
 import Layouts from "@layouts/Layouts";
 
-import { getAllPostsIds, getPostData, getRelatedPosts } from "@library/posts";
 import Date from '@library/date';
 import ImageView from "@components/ImageView";
 
@@ -22,20 +21,16 @@ const PostsDetail = ( props ) => {
               <div className="blog-post ">
                 <div className="blog-image">
                   <figure>
-                    <img src={postData.image} alt={postData.title} />
+                  <img src={`http://localhost:1337${postData.data.image[0].url}`} alt={postData.title} />
                   </figure>
                 </div>
                 <div className="blog-data">
-                  <span className="blog-date"><Date dateString={postData.date} /></span>
+                  {/* <span className="blog-date"><Date dateString={postData.date} /></span> */}
                   <h2>{postData.title}</h2>
                   <div className="blog-author d-flex-all justify-content-start">
-                    <div className="author-img">
-                      <figure>
-                        <img src={postData.author.avatar} alt={postData.author.name} />
-                      </figure>
-                    </div>
+                    
                     <div className="details">
-                      <h3> <span>by</span> {postData.author.name}</h3>
+                      <h3> <span>by</span>LimGroup</h3>
                     </div>
                   </div>
                 </div>
@@ -68,9 +63,9 @@ const PostsDetail = ( props ) => {
                   </>
                 }
 
-                <div className="category shape">
+                {/* <div className="category shape">
                   <p>Posted in {postData.category.map((cat, key) => (<a key={`category-item-${key}`}>{cat}</a>))}</p>
-                </div>
+                </div> */}
 
                 <div className="category shape social-medias">
                     <p>
@@ -259,22 +254,30 @@ const PostsDetail = ( props ) => {
 export default PostsDetail;
 
 export async function getStaticPaths() {
-    const paths = getAllPostsIds()
+  const res = await fetch('http://localhost:1337/api/posts');
+  const data = await res.json();
 
-    return {
-      paths,
-      fallback: false
-    }
+  const paths = data.data.map((post) => ({
+    params: {
+      documentId: post.documentId.toString(),
+      slug: post.title.toLowerCase().replace(/\s+/g, '-'), // or use a dedicated slug field if you have it
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false, // or 'blocking' if you want to generate pages on demand
+  };
 }
 
 export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.id)
-    const relatedPosts = await getRelatedPosts(params.id)
+    const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*`)
 
+    const postData = await res.json()
     return {
       props: {
         data: postData,
-        related: relatedPosts
+        
       }
     }
 }

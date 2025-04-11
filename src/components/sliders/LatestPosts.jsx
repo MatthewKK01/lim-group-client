@@ -4,7 +4,7 @@ import Link from "next/link";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const LatestPostsSlider = ( { posts } ) => {
+const LatestPostsSlider = ({ posts }) => {
     return (
         <section className="gap blog-style-two">
             <div className="heading">
@@ -20,17 +20,17 @@ const LatestPostsSlider = ( { posts } ) => {
                     className="swiper-container blog-slider row"
                 >
                     {posts.slice(0, Data.numOfItems).map((item, key) => (
-                    <SwiperSlide key={`bs-slide-${key}`} className="swiper-slide">
-                    <div className="blog-item col-lg-12">
-                        <span className="blog-post-num">{key+1}.</span>
-                        <span className="blog-date"><Date dateString={item.date} /></span>
-                        <h2><Link href={`/blog/${item.id}`}>{item.title}</Link></h2>
-                        <p>{item.short}</p>
-                        <Link href={`/blog/${item.id}`}>
-                            <i className="fa-solid fa-arrow-up-long"></i>
-                        </Link>
-                    </div>
-                    </SwiperSlide>
+                        <SwiperSlide key={`bs-slide-${key}`} className="swiper-slide">
+                            <div className="blog-item col-lg-12">
+                                <span className="blog-post-num">{key + 1}.</span>
+                                <span className="blog-date"><Date dateString={item.date} /></span>
+                                <h2><Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>{item.title}</Link></h2>
+                                <p>{item.short}</p>
+                                <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
+                                    <i className="fa-solid fa-arrow-up-long"></i>
+                                </Link>
+                            </div>
+                        </SwiperSlide>
                     ))}
                     <div className="swiper-pagination" />
                 </Swiper>
