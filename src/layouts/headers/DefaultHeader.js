@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import appData from "@data/app.json";
-import { useLocalStorage } from "@common/useLocalStorage";
 
 const DefaultHeader = ({ contactButton, cartButton }) => {
-  const navItems = [];
+  const navItems = []; 
 
   appData.header.menu.forEach((item, index) => {
     let s_class1 = '';
@@ -14,7 +13,6 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
     navItems.push(newobj);
   });
 
-  const [themeUI, setThemeUIToggle] = useLocalStorage('theme_ui', '');
   const [desktopMenu, desktopMenuToggle] = useState(false);
   const [mobileMenu, mobileMenuToggle] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -40,30 +38,8 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
     e.target.parentNode.classList.toggle('active');
   }
 
-  const clickedThemeUI = () => {
-    setThemeUIToggle(!themeUI);
 
-    const lightmodeToggle = document.querySelector('#theme-icon');
-    if (themeUI) {
-      document.body.classList.remove('light-d');
-      lightmodeToggle.src = '/images/sun.png';
-    } else {
-      document.body.classList.add('light-d');
-      lightmodeToggle.src = '/images/moon.png';
-    }
-  }
-
-  useEffect(() => {
-    const lightmodeToggle = document.querySelector('#theme-icon');
-
-    if (themeUI) {
-      document.body.classList.add('light-d');
-      lightmodeToggle.src = '/images/moon.png';
-    } else {
-      document.body.classList.remove('light-d');
-      lightmodeToggle.src = '/images/sun.png';
-    }
-  }, []);
+ 
 
   return (
     <header className="header-style-one" >
@@ -73,7 +49,7 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div className="d-flex-all justify-content-between">
+                  <div className="d-flex-all gap-5">
                     <div className="header-logo">
                       <Link href="/">
                         <figure>
@@ -91,61 +67,14 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
                       </ul>
 
                       <div className="extras">
-                        <div className="theme-color">
-                          <img
-                            src={1 ? "/images/moon.png" : "/images/sun.png"}
-                            alt="theme color"
-                            id="theme-icon"
-                            onClick={() => clickedThemeUI()}
-                          />
-                        </div>
+                      
                         <a href="#" id="mobile-menu" className={mobileMenu ? "menu-start open" : "menu-start"} onClick={(e) => clickedMobileMenu(e)}>
                           <svg id="ham-menu" viewBox="0 0 100 100"> <path className="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" /> <path className="line line2" d="M 20,50 H 80" /> <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" /> </svg>
                         </a>
                         <a href="#" id="desktop-menu" className={desktopMenu ? "menu-start open" : "menu-start"} onClick={(e) => clickedDesktopMenu(e)}>
                           <svg id="ham-menue" viewBox="0 0 100 100"> <path className="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" /> <path className="line line2" d="M 20,50 H 80" /> <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" /> </svg>
                         </a>
-                        {cartButton == 1 &&
-                          <>
-                            <a href="#" className="pr-cart" onClick={(e) => clickedCartButton(e)}>
-                              <svg id="Shoping-bags" enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><path d="m452 120h-60.946c-7.945-67.478-65.477-120-135.054-120s-127.109 52.522-135.054 120h-60.946c-11.046 0-20 8.954-20 20v352c0 11.046 8.954 20 20 20h392c11.046 0 20-8.954 20-20v-352c0-11.046-8.954-20-20-20zm-196-80c47.484 0 87.019 34.655 94.659 80h-189.318c7.64-45.345 47.175-80 94.659-80zm176 432h-352v-312h40v60c0 11.046 8.954 20 20 20s20-8.954 20-20v-60h192v60c0 11.046 8.954 20 20 20s20-8.954 20-20v-60h40z" /></g></svg>
-                            </a>
-                            <div className={cartOpen ? "cart-popup show-cart" : "cart-popup"}>
-                              <ul>
-                                <li className="d-flex align-items-center position-relative">
-                                  <div className="p-img light-bg">
-                                    <img src="/img/product1.jpeg" alt="Product Image" />
-                                  </div>
-                                  <div className="p-data">
-                                    <h3 className="font-semi-bold">Pastoral Principles Cards</h3>
-                                    <p className="theme-clr font-semi-bold">1 x $25.00</p>
-                                  </div>
-                                  <a href="#" id="crosss"></a>
-                                </li>
-                                <li className="d-flex align-items-center position-relative">
-                                  <div className="p-img light-bg">
-                                    <img src="/img/product2.jpeg" alt="Product Image" />
-                                  </div>
-                                  <div className="p-data">
-                                    <h3 className="font-semi-bold">Pastoral Principles Cards</h3>
-                                    <p className="theme-clr font-semi-bold">1 x $25.00</p>
-                                  </div>
-                                  <a href="#" id="cross"></a>
-                                </li>
-                              </ul>
-
-                              <div className="cart-total d-flex align-items-center justify-content-between">
-                                <span className="font-semi-bold">Total:</span>
-                                <span className="font-semi-bold">$60.00</span>
-                              </div>
-
-                              <div className="cart-btns d-flex align-items-center justify-content-between">
-                                <Link className="font-bold" href="/cart">View Cart</Link>
-                                <Link className="font-bold theme-bg-clr text-white checkout" href="/checkout">Checkout</Link>
-                              </div>
-                            </div>
-                          </>
-                        }
+                        
                         {contactButton != 1 &&
                           <a href="tel:+02101283492" className="theme-btn">
                             +021 01283492

@@ -30,7 +30,20 @@ const HeroSlider = () => {
                     {slides?.data?.map((item, key) => (
                         <SwiperSlide key={`hs-slide-${key}`} className="swiper-slide">
                             <div className="f-slider-layer">
-                                <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
+                                <picture>
+                                    {/* Mobile version - will load for viewports 600px and below */}
+                                    <source
+                                        media="(max-width: 600px)"
+                                        srcSet={`http://localhost:1337${item.mobile_img[0].url}`}
+                                    />
+
+                                    {/* Desktop version - fallback */}
+                                    <img
+                                        src={`http://localhost:1337${item.image[0].url}`}
+                                        alt={item.title}
+                                    />
+                                </picture>
+
                                 <div className="f-slider-one-data">
                                     <h1>{item.title}</h1>
                                     <p>{item.text}</p>

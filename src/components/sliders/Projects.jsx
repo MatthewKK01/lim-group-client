@@ -43,9 +43,9 @@ const ProjectsSlider = ({ projects }) => {
                                     <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
                                 </figure>
                                 <div className="project-data">
-                                    <h3><Link href={`/projects/${item.id}`}>{item.title}</Link></h3>
+                                    <h3><Link href={`/projects/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>{item.title}</Link></h3>
                                     <p>{item.short}</p>
-                                    <Link className="project-icon" href={`/projects/${item.id}`}>
+                                    <Link className="project-icon" href={`projects/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
                                         <i className="fa-solid fa-angles-right"></i>
                                     </Link>
                                 </div>
