@@ -9,19 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.2",
     "date-fns": "^2.30.0",
-    "eslint-config-next": "^15.2.3",
     "formik": "^2.4.2",
     "gray-matter": "^4.0.3",
-    "next": "^15.2.3",
-    "react": "^19.0.0",
+    "next": "13.4.3",
+    "react": "18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-countup": "^6.4.2",
-    "react-dom": "^19.0.0",
+    "react-dom": "18.2.0",
     "react-modal-video": "^2.0.1",
     "remark": "^14.0.3",
     "remark-html": "^15.0.2",
     "sass": "^1.49.7",
     "swiper": "^9.0.0"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }

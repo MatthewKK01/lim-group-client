@@ -1,8 +1,6 @@
 import Layouts from "@layouts/Layouts";
-
-import Date from '@library/date';
 import ImageView from "@components/ImageView";
-
+import { BlocksRenderer} from '@strapi/blocks-react-renderer';
 import PageBanner from "@components/PageBanner";
 
 const PostsDetail = ( props ) => {
@@ -11,7 +9,7 @@ const PostsDetail = ( props ) => {
 
   return (
     <Layouts>
-      <PageBanner pageTitle={"Blog Detail"} pageDesc={"our values and vaulted us to the top of our industry."} />
+      <PageBanner pageTitle={postData.data.title} pageDesc={postData.data.page_description} />
 
       {/* Blog Style Three Start */}
       <section className="gap blog-style-one blog-detail detail-page">
@@ -27,10 +25,12 @@ const PostsDetail = ( props ) => {
                 <div className="blog-data">
                   {/* <span className="blog-date"><Date dateString={postData.date} /></span> */}
                   <h2>{postData.title}</h2>
-                  <div className="blog-author d-flex-all justify-content-start">
-                    
+                  <div className="blog-author d-flex-all flex-column justify-content-start">
+                  <article className="proose mx-auto">
+                  <BlocksRenderer content={postData.data.content} />;
+                  </article>
                     <div className="details">
-                      <h3> <span>by</span>LimGroup</h3>
+                      <h3> <span>by</span> LimGroup</h3>
                     </div>
                   </div>
                 </div>
