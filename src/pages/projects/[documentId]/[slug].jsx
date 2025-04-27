@@ -4,13 +4,13 @@ import Link from "next/link";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { getSortedProjectsData, getAllProjectsIds, getProjectData, getRelatedProjects } from "@library/projects";
+// import { getSortedProjectsData, getAllProjectsIds, getProjectData, getRelatedProjects } from "@library/projects";
 
 import RelatedProjectsSection from "@components/RelatedProjects";
 import CallToActionSection from "@components/sections/CallToAction";
 
 const ProjectDetail = ( props ) => {
-  
+  console.log("yle")
   const postData = props.data;
   let prev_id, next_id, prev_key, next_key = 0;
 
@@ -141,7 +141,15 @@ const ProjectDetail = ( props ) => {
 export default ProjectDetail;
 
 export async function getStaticPaths() {
-    const paths = getAllProjectsIds()
+  const res = await fetch('http://localhost:1337/api/posts');
+  const data = await res.json();
+
+  const paths = data.data.map((post) => ({
+    params: {
+      documentId: post.documentId.toString(),
+      slug: post.title.toLowerCase().replace(/\s+/g, '-'), // or use a dedicated slug field if you have it
+    },
+  }));
 
     return {
       paths,
@@ -150,15 +158,18 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const postData = await getProjectData(params.id)
-    const relatedPosts = await getRelatedProjects(params.id)
+  const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*`)
+const postData = await res.json()
+console.log(data)
+
+  const relatedPosts = await getRelatedProjects(params.id)
     const allProjects = await getSortedProjectsData()
 
     return {
       props: {
         data: postData,
-        related: relatedPosts,
-        projects: allProjects
+        // related: relatedPosts,
+        // projects: allProjects
       }
     }
 }

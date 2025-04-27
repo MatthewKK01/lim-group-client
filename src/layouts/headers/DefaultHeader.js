@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import appData from "@data/app.json";
 
-const DefaultHeader = ({ contactButton, cartButton }) => {
-  const navItems = []; 
+const DefaultHeader = ({ contactButton, cartButton}) => {
+  const navItems = [];
 
   appData.header.menu.forEach((item, index) => {
     let s_class1 = '';
@@ -39,7 +39,7 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
   }
 
 
- 
+
 
   return (
     <header className="header-style-one" >
@@ -66,18 +66,17 @@ const DefaultHeader = ({ contactButton, cartButton }) => {
                         ))}
                       </ul>
 
-                      <div className="extras">
-                      
+                      <div className="extras ms-5">
+
                         <a href="#" id="mobile-menu" className={mobileMenu ? "menu-start open" : "menu-start"} onClick={(e) => clickedMobileMenu(e)}>
                           <svg id="ham-menu" viewBox="0 0 100 100"> <path className="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" /> <path className="line line2" d="M 20,50 H 80" /> <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" /> </svg>
                         </a>
-                        <a href="#" id="desktop-menu" className={desktopMenu ? "menu-start open" : "menu-start"} onClick={(e) => clickedDesktopMenu(e)}>
-                          <svg id="ham-menue" viewBox="0 0 100 100"> <path className="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" /> <path className="line line2" d="M 20,50 H 80" /> <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" /> </svg>
-                        </a>
-                        
+
+
                         {contactButton != 1 &&
                           <a href="tel:+02101283492" className="theme-btn">
-                            +021 01283492
+                            +995 577 29 92 49
+
                             <i>
                               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="62" viewBox="0 0 40 62">
                                 <defs>

@@ -1,8 +1,8 @@
 {
     "subtitle": "Let us Help Guide",
-    "title": "Recent Articles",
+    "title": "ბოლო პოსტები",
     "button": {
-        "label": "View All Posts",
+        "label": "იხილეთ ყველა პოსტი",
         "link": "/blog"
     },
     "numOfItems": 3

@@ -1,8 +1,6 @@
 import Layouts from "@layouts/Layouts";
 import Link from "next/link";
-
-import { getSortedProjectsData } from "@library/projects";
-
+import Image from "next/image"
 import PageBanner from "@components/PageBanner";
 
 const Portfolio = (props) => {
@@ -12,13 +10,13 @@ const Portfolio = (props) => {
 
       {/* Our Project One Start */}
       <section className="gap no-top project-completed our-projects-one">
-        {props.projects.map((item, key) => (
+        {props.projects.data.map((item, key) => (
         <div key={`projects-item-${key}`} className="prj-post">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-lg-6">
                 <div className="proj-data">
-                  <h3><Link href={`/projects/${item.id}`}>{item.title}</Link></h3>
+                  <h3><Link href={`/projects/${item.documentId}/${item.slug}`}>{item.title}</Link></h3>
                   <p>{item.short}</p>
                   <div className="loc-date">
                     <div>
@@ -35,7 +33,7 @@ const Portfolio = (props) => {
               <div className="col-lg-6">
                 <div className="data">
                   <figure>
-                    <img src={item.image} alt={item.title} />
+                    <img  src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
                   </figure>
                 </div>
               </div>
@@ -70,7 +68,15 @@ const Portfolio = (props) => {
 export default Portfolio;
 
 export async function getStaticProps() {
-  const allProjects = getSortedProjectsData();
+  let url = ``
+  const locale = 'en'
+  if(locale === 'en'){
+    url = `http://localhost:1337/api/project?populate=*`
+  }
+
+  const res = await fetch(url)
+
+  const allProjects = await res.json()
 
   return {
     props: {

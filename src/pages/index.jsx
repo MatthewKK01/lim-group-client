@@ -2,7 +2,7 @@ import React from "react";
 import Layouts from "@layouts/Layouts";
 import dynamic from "next/dynamic";
 
-import { getSortedProjectsData } from "@library/projects";
+
 
 import AboutSection from "@components/sections/About";
 import ServicesSection from "@components/sections/Services";
@@ -23,7 +23,7 @@ const Home1 = (props) => {
         <ServicesSection />
         <AboutSection />
         <CountersSection />
-        <ProjectsSlider projects={props.projects} />
+        <ProjectsSlider  />
         <FeaturesSection />
         <LatestPostsSection posts={props.posts} />
       </>
@@ -41,12 +41,11 @@ export async function getStaticProps() {
 
 
   const allPosts = data.data;
-  const allProjects = getSortedProjectsData();
+  
 
   return {
     props: {
       posts: allPosts,
-      projects: allProjects
     }
   }
 }

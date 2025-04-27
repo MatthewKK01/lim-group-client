@@ -22,10 +22,10 @@ const DefaultFooter = () => {
                             <img src="/img/blog-author-img-2.jpg" alt="Contact Images" />
                         </figure>
                     </div>
-                    <p>Sales representative <span>+1 (251) 344 0 66</span> free call !</p>
+                    <p>ტექსტი <span>+995 577 29 92 49</span></p>
                 </div>
                 <Link href="/contact" className="theme-btn">
-                    Get a Consultation <i className="fa-solid fa-angles-right" />
+                    მიიღე კონსულტაცია <i className="fa-solid fa-angles-right" />
                 </Link>
             </div>
             </div>
@@ -36,8 +36,8 @@ const DefaultFooter = () => {
             <div className="row">
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="footer-col">
-                    <h3>Information</h3>
-                    <p>We successfully cope with tasks of varying complexity, provide long-term guarantees and regularly master new technologies.</p>
+                    <h3>ინფორმაცია</h3>
+                    <p>ჩვენ წარმატებით ვასრულებთ ნებისმიერი სირთულის სამშენებლო პროექტებს, ვთავაზობთ გრძელვადიან გარანტიებს და მუდმივად ვიღრმავებთ ცოდნას თანამედროვე ტექნოლოგიებში.</p>
                 </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">

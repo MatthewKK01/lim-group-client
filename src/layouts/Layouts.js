@@ -3,7 +3,7 @@ import { scrollAnimation } from "@common/scrollAnims";
 
 import Footer from "./footers/Index";
 import Header from "./headers/Index";
-import Preloader from "./Preloader";
+// import Preloader from "./Preloader";
 
 const Layouts = ({
   children,
@@ -26,7 +26,7 @@ const Layouts = ({
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
 
       {!noHeader && (
         <Header
