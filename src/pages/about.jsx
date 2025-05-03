@@ -4,11 +4,7 @@ import Layouts from "@layouts/Layouts";
 
 import PageBanner from "@components/PageBanner";
 import CountersSection from "@components/sections/Counters";
-import RenovationSection from "@components/sections/Renovation";
 
-const TeamSlider = dynamic( () => import("@components/sliders/Team"), { ssr: false } );
-const PartnersSlider = dynamic( () => import("@components/sliders/Partners"), { ssr: false } );
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
 
 const About = () => {
   return (
@@ -155,13 +151,6 @@ const About = () => {
       </section>
       {/*About Key Benefits End */}
 
-      <TeamSlider noTop />
-
-      <RenovationSection />
-
-      <TestimonialSlider />
-
-      <PartnersSlider noTop />
       
     </Layouts>
   );
