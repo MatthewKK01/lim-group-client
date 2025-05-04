@@ -1,7 +1,4 @@
-import dynamic from "next/dynamic";
-
 import Layouts from "@layouts/Layouts";
-
 import PageBanner from "@components/PageBanner";
 import CountersSection from "@components/sections/Counters";
 

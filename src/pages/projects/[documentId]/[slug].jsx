@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import { getSortedProjectsData, getAllProjectsIds, getProjectData, getRelatedProjects } from "@library/projects";
 
-import RelatedProjectsSection from "@components/RelatedProjects";
+// import RelatedProjectsSection from "@components/RelatedProjects";
 import CallToActionSection from "@components/sections/CallToAction";
 
 const ProjectDetail = ( props ) => {
@@ -131,7 +131,7 @@ const ProjectDetail = ( props ) => {
         </>
       }
 
-      <RelatedProjectsSection projects={props.related} />
+      {/* <RelatedProjectsSection projects={props.related} /> */}
 
       <CallToActionSection />
 
@@ -160,16 +160,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*`)
 const postData = await res.json()
-console.log(data)
 
-  const relatedPosts = await getRelatedProjects(params.id)
-    const allProjects = await getSortedProjectsData()
 
     return {
       props: {
         data: postData,
-        // related: relatedPosts,
-        // projects: allProjects
+  
       }
     }
 }
