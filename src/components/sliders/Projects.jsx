@@ -3,6 +3,7 @@ import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 
 const ProjectsSlider = ({ projects }) => {
@@ -22,14 +23,18 @@ const ProjectsSlider = ({ projects }) => {
         fetchData();
     }, []);
 
+    const { t } = useTranslation('projects');
+
+
     return (
         <section className="gap project-style-one light-bg-color">
+          
             <div className="heading">
                 <figure>
                     <img src="/img/heading-icon.png" alt="Heading Icon" />
                 </figure>
-                <span>{Data.subtitle}</span>
-                <h2>{Data.title}</h2>
+                <span>{t("subtitle")}</span>
+                <h2>{t("title")}</h2>
             </div>
             <div className="container">
                 <Swiper

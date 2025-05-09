@@ -3,14 +3,9 @@ import PageBanner from "@components/PageBanner";
 import Link from "next/link";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// import { getSortedProjectsData, getAllProjectsIds, getProjectData, getRelatedProjects } from "@library/projects";
-
-// import RelatedProjectsSection from "@components/RelatedProjects";
 import CallToActionSection from "@components/sections/CallToAction";
 
 const ProjectDetail = ( props ) => {
-  console.log("yle")
   const postData = props.data;
   let prev_id, next_id, prev_key, next_key = 0;
 

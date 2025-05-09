@@ -1,12 +1,18 @@
 import Layouts from "@layouts/Layouts";
 import Link from "next/link";
 import Image from "next/image"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import PageBanner from "@components/PageBanner";
+import { useTranslation } from "next-i18next";
 
 const Portfolio = (props) => {
+
+  const {t} = useTranslation("projects-banner")
+
   return (
     <Layouts>
-      <PageBanner pageTitle={"Our Projects"} pageDesc={"our values and vaulted us to the top of our industry."} />
+      <PageBanner pageTitle={t("pageTitle")} pageDesc={t("pageDesc")} />
 
       {/* Our Project One Start */}
       <section className="gap no-top project-completed our-projects-one">
@@ -67,12 +73,10 @@ const Portfolio = (props) => {
 };
 export default Portfolio;
 
-export async function getStaticProps() {
-  let url = ``
-  const locale = 'en'
-  if(locale === 'en'){
-    url = `http://localhost:1337/api/project?populate=*`
-  }
+export async function getStaticProps({locale}) {
+  
+    const url = `http://localhost:1337/api/project?populate=*`
+  
 
   const res = await fetch(url)
 
@@ -80,7 +84,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      projects: allProjects
+      projects: allProjects,
+              ...(await serverSideTranslations(locale, ['projects-banner'])), // Add your namespaces here
+      
     }
   }
 }

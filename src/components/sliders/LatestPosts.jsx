@@ -3,16 +3,19 @@ import Date from '@library/date';
 import Link from "next/link";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useTranslation } from "next-i18next";
 
 const LatestPostsSlider = ({ posts }) => {
+    const {t} = useTranslation("latest-posts")
+
     return (
         <section className="gap blog-style-two">
             <div className="heading">
                 <figure>
                     <img src="/img/heading-icon.png" alt="heading-icon" />
                 </figure>
-                <span>{Data.subtitle}</span>
-                <h2>{Data.title}</h2>
+                <span>{t("subtitle")}</span>
+                <h2>{t("title")}</h2>
             </div>
             <div className="container">
                 <Swiper

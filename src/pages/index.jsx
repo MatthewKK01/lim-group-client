@@ -2,6 +2,7 @@ import React from "react";
 import Layouts from "@layouts/Layouts";
 import dynamic from "next/dynamic";
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
 import AboutSection from "@components/sections/About";
@@ -32,20 +33,16 @@ const Home1 = (props) => {
 };
 export default Home1;
 
-export async function getStaticProps() {
-
-
+export async function getStaticProps({locale}) {
   const response = await fetch("http://localhost:1337/api/posts?populate=*")
   const data = await response.json();
   
-
-
   const allPosts = data.data;
-  
-
+// have to import everything
   return {
     props: {
       posts: allPosts,
+        ...(await serverSideTranslations(locale, ['projects','latest-posts','projectsBanner'])), // Add your namespaces here
     }
   }
 }
