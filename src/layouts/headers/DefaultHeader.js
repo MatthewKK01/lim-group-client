@@ -1,16 +1,32 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import appData from "@data/app.json";
+import { useRouter } from "next/router";
 
 const DefaultHeader = ({ contactButton, cartButton}) => {
   const navItems = [];
+  const { locale } = useRouter();
+  const englishMenu = {
+    "მთავარი": "Home",
+    "ჩვენს შესახებ": "About",
+    "პროექტები": "Projects",
+    "ბლოგი": "Blog",
+    "კონტაქტი": "Contact"
+  };
 
   appData.header.menu.forEach((item, index) => {
     let s_class1 = '';
 
+    const translatedLabel = locale === 'en' && englishMenu[item.label]
+    ? englishMenu[item.label]
+    : item.label;
 
-    let newobj = Object.assign({}, item, { "classes": s_class1 });
-    navItems.push(newobj);
+    const newobj = {
+      ...item,
+      label: translatedLabel,
+      classes: s_class1
+    };
+        navItems.push(newobj);
   });
 
   const [desktopMenu, desktopMenuToggle] = useState(false);
