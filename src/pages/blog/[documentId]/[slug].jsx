@@ -25,11 +25,11 @@ const PostsDetail = ( props ) => {
                 <div className="blog-data">
                   {/* <span className="blog-date"><Date dateString={postData.date} /></span> */}
                   <h2>{postData.title}</h2>
-                  <div className="blog-author d-flex-all flex-column justify-content-start">
-                  <article className="proose mx-auto">
+                  <div className="blog-author d-flex flex-column justify-content-start">
+                  <article className="proose">
                   <BlocksRenderer content={postData.data.content} />;
                   </article>
-                    <div className="details">
+                    <div className="details d-flex justify-content-end">
                       <h3> <span>by</span> LimGroup</h3>
                     </div>
                   </div>

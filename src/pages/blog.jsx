@@ -4,12 +4,17 @@ import Pagination from '@components/Pagination'
 
 import PageBanner from "@components/PageBanner";
 import Layouts from "@layouts/Layouts";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 
 const Blog = ( { posts, totalPosts, currentPage } ) => {
+
+  const {t} = useTranslation("blog-page")
+
   return (
     <Layouts>
-      <PageBanner pageTitle={"Our Blog"} pageDesc={"our values and vaulted us to the top of our industry."} />
+      <PageBanner pageTitle={t('pageTitle')} pageDesc={t("pageDesc")} />
 
       {/* Blog Style One Start */}
       <section className="gap blog-style-one our-blog-one">
@@ -39,7 +44,8 @@ const Blog = ( { posts, totalPosts, currentPage } ) => {
 };
 export default Blog;
 
-export async function getStaticProps() {
+
+export async function getStaticProps({locale}) {
 
 
   const response = await fetch("http://localhost:1337/api/posts?populate=*")
@@ -50,7 +56,9 @@ export async function getStaticProps() {
     props: {
       posts,
       totalPosts: total,
-      currentPage: 1
+      currentPage: 1,
+      ...(await serverSideTranslations(locale, ["blog-page"])), // Add your namespaces here
+
     }
   }
 }
