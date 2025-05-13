@@ -143,7 +143,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
             <a href="#" id="res-cross" onClick={(e) => clickedMobileMenu(e)}></a>
           </div>
 
-          <div className="mobile-nav desktop-menu">
+          {/* <div className="mobile-nav desktop-menu">
             <h2>We Build Building and Great Homes.</h2>
             <p className="des">We successfully cope with tasks of varying complexity, provide long-term guarantees and regularly master new technologies.</p>
 
@@ -160,7 +160,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                 <a href={item.link} target="_blank" key={`hsocial-item-${key}`}>{item.title}</a>
               ))}
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>

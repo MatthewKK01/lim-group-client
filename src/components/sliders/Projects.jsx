@@ -50,7 +50,7 @@ const ProjectsSlider = ({ projects }) => {
                                 <div className="project-data">
                                     <h3><Link href={`/projects/${item.documentId}/${item.slug}`}>{item.title}</Link></h3>
                                     <p>{item.short}</p>
-                                    <Link className="project-icon" href={`projects/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
+                                    <Link className="project-icon" href={`projects/${item.documentId}/${item.slug}`}>
                                         <i className="fa-solid fa-angles-right"></i>
                                     </Link>
                                 </div>

@@ -6,24 +6,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import CallToActionSection from "@components/sections/CallToAction";
 
 const ProjectDetail = ( props ) => {
-  const postData = props.data;
+  const postData = props.data.data;
   let prev_id, next_id, prev_key, next_key = 0;
 
-  props.projects.forEach(function(item, key){
-    if ( item.id == postData.id ) {
-      prev_key = key - 1;
-      next_key = key + 1;
-    }
-  })
+  // props.projects.forEach(function(item, key){
+  //   if ( item.id == postData.id ) {
+  //     prev_key = key - 1;
+  //     next_key = key + 1;
+  //   }
+  // })
 
-  props.projects.forEach(function(item, key){
-    if ( key == prev_key ) {
-      prev_id = item.id;
-    }
-    if ( key == next_key ) {
-      next_id = item.id;
-    }
-  })
+  // props.projects.forEach(function(item, key){
+  //   if ( key == prev_key ) {
+  //     prev_id = item.id;
+  //   }
+  //   if ( key == next_key ) {
+  //     next_id = item.id;
+  //   }
+  // })
 
   return (
     <Layouts>
@@ -70,7 +70,7 @@ const ProjectDetail = ( props ) => {
                 
                 {typeof postData.checklist != "undefined" &&
                 <>
-                  <h3>{postData.checklist.title}</h3>
+                  <h3>{postData.title}</h3>
                   <ul className="include">
                     {postData.checklist.items.map((item, key) => (
                     <li key={`checklist-item-${key}`}><i className="fa-solid fa-check" /> {item}</li>
@@ -79,21 +79,21 @@ const ProjectDetail = ( props ) => {
                 </>
                 }
 
-                {typeof postData.details != "undefined" &&
+                {typeof postData != "undefined" &&
                 <div className="row space">
-                  {postData.details.items.map((item, key) => (
-                  <div key={`details-item-${key}`} className="col-lg-6 col-md-6 col-sm-12"  >
+               
+                  <div className="col-lg-6 col-md-6 col-sm-12"  >
                     <div className="project-d-detail">
                       <div className="data">
-                        <h3>{item.label}</h3>
-                        <p>{item.value}</p>
+                        <h3>{postData.title}</h3>
+                        <p>{postData.value}</p>
                       </div>
                       <div className="d-flex-all icon">
-                        <img src={item.icon} alt={item.alt} />
+                        <img src={`http://localhost:1337${postData.image[0].url}`} alt={postData.caption} />
                       </div>
                     </div>
                   </div>
-                  ))}
+                  
                 </div>
                 }
               </div>
@@ -105,7 +105,7 @@ const ProjectDetail = ( props ) => {
       {typeof postData.slider != "undefined" &&
         <>
           {/* Project Detail Slider Start */}
-          <div className="gap no-top project-detail-slider">
+          {/* <div className="gap no-top project-detail-slider">
             <div className="container-fluid g-0">
               <Swiper
                 {...sliderProps.projDetailsSlider}
@@ -121,7 +121,7 @@ const ProjectDetail = ( props ) => {
                 <div className="swiper-pagination" />
               </Swiper>
             </div>
-          </div>
+          </div> */}
           {/* Project Detail Slider Start */}
         </>
       }
@@ -136,13 +136,13 @@ const ProjectDetail = ( props ) => {
 export default ProjectDetail;
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:1337/api/posts');
+  const res = await fetch('http://localhost:1337/api/project');
   const data = await res.json();
 
-  const paths = data.data.map((post) => ({
+  const paths = data.data.map((project) => ({
     params: {
-      documentId: post.documentId.toString(),
-      slug: post.title.toLowerCase().replace(/\s+/g, '-'), // or use a dedicated slug field if you have it
+      documentId: project.documentId.toString(),
+      slug:project.slug
     },
   }));
 
@@ -153,14 +153,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*`)
-const postData = await res.json()
+  const res = await fetch(`http://localhost:1337/api/project/${params.documentId}?populate=*`)
+const project = await res.json()
 
 
     return {
       props: {
-        data: postData,
-  
+        data: project,
       }
     }
 }
