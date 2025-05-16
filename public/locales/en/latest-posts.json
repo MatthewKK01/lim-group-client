@@ -1,5 +1,7 @@
 {
     "subtitle": "Blog & News",
     "title": "Recent Articles",
-    "numOfItems": 6
+    "numOfItems": 6,
+    "label": "Explore all news"
+
 }

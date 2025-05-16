@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const LatestPostsSection = ( { posts } ) => {
         const {t} = useTranslation("latest-posts")
-    
+
     const apiUrl =`http://localhost:1337`
     return (
         <section className="gap no-top blog-style-one">
@@ -52,7 +52,7 @@ const LatestPostsSection = ( { posts } ) => {
                     ))}
                 </div>
                 <div className="common-btn">
-                    <Link href={Data.button.link} className="theme-btn">{Data.button.label} <i className="fa-solid fa-angles-right" /></Link>
+                    <Link href={Data.button.link} className="theme-btn">{t("label")} <i className="fa-solid fa-angles-right" /></Link>
                 </div>
             </div>
         </section>
