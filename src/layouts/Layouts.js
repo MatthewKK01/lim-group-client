@@ -18,10 +18,10 @@ const Layouts = ({
     scrollAnimation();
 
     // preloader
-    if (typeof window !== 'undefined') {
-      const loader = document.getElementsByClassName('preloader');
-      if (loader[0]) loader[0].classList.add('loaded');
-    }
+    // if (typeof window !== 'undefined') {
+    //   const loader = document.getElementsByClassName('preloader');
+    //   if (loader[0]) loader[0].classList.add('loaded');
+    // }
   }, []);
 
   return (

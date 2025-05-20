@@ -402,7 +402,7 @@ button.scrollTopStick.active:before,
     background: $accent-1;
     font-size: $text-sm;
     font-family: $font-1;
-    color: $black;
+    color: $white;
     display: inline-flex;
     position: relative;
     border: 2px solid;
@@ -1654,6 +1654,9 @@ span.counter {
     padding: 0 25px;
     font-weight: bold;
 }
+.core-features button.accordion-button:not(.collapsed) {
+    color: $white !important;
+}
 .core-features button.accordion-button:before {
     content: "";
     background: $black;
@@ -1679,6 +1682,7 @@ span.counter {
 .core-features button.accordion-button.collapsed {
     background: $light-bg;
 }
+
 .core-features .accordion-item:not(:last-child) {
     margin-bottom: 50px;
 }
@@ -1915,7 +1919,7 @@ span.counter {
 }
 .blog-style-one .blog-data .blog-date {
     font-size: $text-sm;
-    color: $black;
+    color: $white;
     font-family: $font-1;
     padding: 8px 40px 8px 20px;
     display: inline-flex;
@@ -1932,7 +1936,7 @@ span.counter {
     right: -35px;
     transform: translateX(-50%) skew(-24deg, 0deg);
     z-index: 0;
-    border: 3px solid $white;
+    border: 1px solid $white;
 }
 .blog-style-one .blog-post .blog-image a {
     width: 60px;
@@ -1975,7 +1979,7 @@ span.counter {
     right: -60px;
 }
 .blog-style-one .blog-post .blog-image a i {
-    color: $black;
+    color: $white;
 }
 .blog-style-one .blog-post .blog-image {
     position: relative;
