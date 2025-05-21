@@ -42,7 +42,7 @@ export async function getStaticProps({locale}) {
   return {
     props: {
       posts: allPosts,
-        ...(await serverSideTranslations(locale, ['projects','latest-posts','projectsBanner'])), // Add your namespaces here
+        ...(await serverSideTranslations(locale, ['projects','latest-posts','projectsBanner','about-section','counter'])), // Add your namespaces here
     }
   }
 }
