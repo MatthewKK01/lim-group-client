@@ -1039,6 +1039,9 @@ button.scrollTopStick:hover i {
     width: 70px;
     height: 70px;
 }
+.service-style-one .service-data:hover .svg-icon img {
+    filter: brightness(15) invert(1);
+}
 .service-style-one .service-data .svg-icon:before {
     content: "";
     position: absolute;
