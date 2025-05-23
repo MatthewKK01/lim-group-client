@@ -47,24 +47,6 @@ const Portfolio = (props) => {
           </div>
         </div>
         ))}
-
-        <div className="container">
-          <div className="row">
-            <div className="builty-pagination">
-              <nav aria-label="Page navigation example">
-                <ul className="pagination">
-                  <li className="page-item"><a className="page-link" href="#."><i className='fa-solid fa-arrow-left-long'></i></a></li>
-                  <li className="page-item"><a className="page-link" href="#.">01</a></li>
-                  <li className="page-item"><a className="page-link" href="#.">02</a></li>
-                  <li className="page-item"><a className="page-link" href="#.">03</a></li>
-                  <li className="page-item space"><a className="page-link" href="#.">..........</a></li>
-                  <li className="page-item"><a className="page-link" href="#.">08</a></li>
-                  <li className="page-item"><a className="page-link" href="#."><i className='fa-solid fa-arrow-right-long'></i> </a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
       </section>
       {/* Our Project One End */}
       
