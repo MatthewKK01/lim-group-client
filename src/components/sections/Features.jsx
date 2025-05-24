@@ -10,7 +10,6 @@ const FeaturesSection = () => {
 
   const { t } = useTranslation('features');
   const Data = t('items', { returnObjects: true });
-  console.log(Data)
 
   return (
     <section className="core-features">

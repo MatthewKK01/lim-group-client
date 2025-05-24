@@ -5,7 +5,6 @@ import { useTranslation } from "next-i18next";
 
 const CountersSection = () => {
   const { t } = useTranslation("counter");
-  console.log("Translated label:", t(Data.items[0].label)); // Should be "Years" in EN
   return (
     <section className="gap no-top counter-style-one">
         <div className="container">

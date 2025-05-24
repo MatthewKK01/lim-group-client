@@ -3,36 +3,21 @@ import Layouts from "@layouts/Layouts";
 import Accordion from 'react-bootstrap/Accordion';
 import appData from "@data/app.json";
 import { Formik } from 'formik';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
+
 
 const Contact = () => {
-  const faqData = {
-    "items": [
-        {
-            "title": "Occupational Health Risk Management?",
-            "text": "Commercial management in construction ensures the planning, execution, and coordination of a construction project from the start to finish. These are often for specific projects such as building or renovation projects that are sold or leased."
-        },
-        {
-            "title": "What is commercial management in construction?",
-            "text": "Commercial management in construction ensures the planning, execution, and coordination of a construction project from the start to finish. These are often for specific projects such as building or renovation projects that are sold or leased."
-        },
-        {
-            "title": "Start a construction management?",
-            "text": "Commercial management in construction ensures the planning, execution, and coordination of a construction project from the start to finish. These are often for specific projects such as building or renovation projects that are sold or leased."
-        },
-        {
-            "title": "Measure quality in construction projects?",
-            "text": "Commercial management in construction ensures the planning, execution, and coordination of a construction project from the start to finish. These are often for specific projects such as building or renovation projects that are sold or leased."
-        },
-        {
-            "title": "Prepare a construction project schedule?",
-            "text": "Commercial management in construction ensures the planning, execution, and coordination of a construction project from the start to finish. These are often for specific projects such as building or renovation projects that are sold or leased."
-        }
-    ]
-  }
+      const {t} = useTranslation("contact")
+      
+
+      // Use translation and cast to array of items
+      const faqItems = t('items', { returnObjects: true });
+    
 
   return (
     <Layouts>
-        <PageBanner pageTitle={"Contact Us"} pageDesc={"our values and vaulted us to the top of our industry."} />
+        <PageBanner pageTitle={t('pageTitle')} pageDesc={t("pageDesc")} />
 
         {/* Contact Form 2 Start */}
         <section className="gap contact-form-2">
@@ -40,9 +25,9 @@ const Contact = () => {
             <div className="row">
                 <div className="col-lg-7" >
                     <div className="data">
-                        <span>How can we help?</span>
-                        <h2>Quality & Passion With Contact Form</h2>
-                        <p>Have questions or want to chat? Fill out our contact form, and we’ll put you in touch with the right people.</p>
+                        <span>{t('helpText')}</span>
+                        <h2>{t('heading')}</h2>
+                        <p>{t('description')}</p>
                         <Formik
                         initialValues = {{ email: '', name: '', subject: '', message: '' }}
                         validate = { values => {
@@ -160,18 +145,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <div className="col-lg-4 offset-lg-1" >
-                <div className="bio">
-                    <div className="data">
-                        <figure>
-                            <img className="author" src="/img/team-1.jpg" alt="Bio Image" />
-                        </figure>
-                        <h3>Walimes Jonnie</h3>
-                        <p>Director of Constro Company</p>
-                        <figure>
-                            <img src="/img/signature.png" alt="Signature Image" />
-                        </figure>
-                    </div>
-                </div>
+               
                 <div className="info">
                     <ul className="contact">
                         <li>
@@ -225,15 +199,16 @@ const Contact = () => {
                 <figure>
                     <img src="/images/heading-icon.png" alt="Heading Icon" />
                 </figure>
-                <span>Frequently asked question</span>
-                <h2>Finding Solutions For Your Idea</h2>
+                
+                <span>{t('faq_label')}</span>
+<h2>{t('solutions_heading')}</h2>
             </div>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-10 offset-lg-1" >
                     <div className="acc2">
                         <Accordion defaultActiveKey="contact-acc-0" alwaysOpen>
-                            {faqData.items.map((item, key) => (
+                        {faqItems.map((item, key) => (
                             <Accordion.Item key={`contact-item-${key}`} eventKey={`contact-acc-${key}`}>
                                 <Accordion.Header>
                                     {item.title}
@@ -261,3 +236,12 @@ const Contact = () => {
   );
 };
 export default Contact;
+
+export async function getStaticProps({locale}) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["contact"])), // Add your namespaces here
+    }
+  }
+}
