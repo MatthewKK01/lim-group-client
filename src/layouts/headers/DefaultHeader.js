@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import appData from "@data/app.json";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const DefaultHeader = ({ contactButton, cartButton}) => {
   const navItems = [];
@@ -69,7 +70,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                     <div className="header-logo">
                       <Link href="/">
                         <figure>
-                          <img src={appData.header.logo.image} alt={appData.header.logo.alt} />
+                          <Image width={40} height={40} src={appData.header.logo.image} alt={appData.header.logo.alt} />
                         </figure>
                       </Link>
                     </div>
@@ -89,7 +90,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                         </a>
 
 
-                        {contactButton != 1 &&
+                        
                           <a href="tel:+02101283492" className="theme-btn">
                             +995 577 29 92 49
 
@@ -107,12 +108,12 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                               </svg>
                             </i>
                           </a>
-                        }
-                        {contactButton == 1 &&
-                          <Link href="/contact" className="theme-btn simple">
-                            Get a Quote
+                        
+                        
+                          <Link href="http://localhost:1337/admin/auth/login" target="_blank" className="theme-btn simple">
+                            Login
                           </Link>
-                        }
+                        
 
                       </div>
 

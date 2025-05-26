@@ -1,5 +1,6 @@
 import Link from "next/link";
 import appData from "@data/app.json";
+import Image from "next/image";
 
 const DefaultFooter = () => {
   return (
@@ -10,7 +11,7 @@ const DefaultFooter = () => {
             <div className="footer-first">
                 <div className="footer-logo">
                     <Link href="/">
-                        <img src={appData.footer.logo.image} alt={appData.footer.logo.alt} />
+                        <Image width={80} height={70} src={appData.footer.logo.image} alt={appData.footer.logo.alt} />
                     </Link>
                 </div>
                 <div className="contact-info d-flex-all">

@@ -2,7 +2,7 @@
     "settings": {
         "siteName": "Limgroup",
         "preloader": {
-            "image": "/img/Builty-Logo-Black-Home.svg",
+            "image": "/img/whatsapp.jpeg",
             "alt": "logo"
         },
         "formspreeURL": "https://formspree.io/f/your_api_key",
@@ -13,7 +13,7 @@
     },
     "header": {
         "logo": {
-            "image": "/img/Builty-Logo.svg",
+            "image": "/img/whatsapp.jpeg",
             "alt": "logo"
         },
       "menu": [
@@ -42,19 +42,19 @@
     },
     "footer": {
         "logo": {
-            "image": "/img/Builty-Logo.svg",
+            "image": "/img/whatsapp.jpeg",
             "alt": "logo"
         },
         "info": {
             "address": "901 N Pitt Str., Suite 170, VA 22314, USA",
-            "tel": "(+180) 50 318 47 07",
+            "tel": "(+995) 577 29 92 49",
             "email": "info@lim.ge"
         },
-        "copy": "Builty Construction Company <i class='fa-solid fa-heart'></i> © 2023 <a href='https://themeforest.net/user/bslthemes/portfolio'>bslthemes</a> All rights reserved"
+        "copy": "Limgroup Construction Company <i class='fa-solid fa-heart'></i> © 2025 All rights reserved"
     },
     "social": [
         {
-            "link": "https://facebook.com",
+            "link": "https://www.facebook.com/Limgroup.ge/?locale=ka_GE",
             "title": "Facebook"
         },
         {

@@ -2,6 +2,7 @@ import Layouts from "@layouts/Layouts";
 import PageBanner from "@components/PageBanner";
 import CountersSection from "@components/sections/Counters";
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const About = () => {
   return (
@@ -153,3 +154,12 @@ const About = () => {
   );
 };
 export default About;
+
+
+export async function getStaticProps({locale}) {
+  return {
+    props: {
+        ...(await serverSideTranslations(locale, ['counter'])), // Add your namespaces here
+    }
+  }
+}
