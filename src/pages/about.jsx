@@ -1,19 +1,25 @@
 import Layouts from "@layouts/Layouts";
 import PageBanner from "@components/PageBanner";
 import CountersSection from "@components/sections/Counters";
-
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const About = () => {
+
+  const { t } = useTranslation("about")
+  const points = t('points', { returnObjects: true });
+  const steps = t('steps', { returnObjects: true })
+  const benefits = t('benefits', { returnObjects: true })
+
   return (
     <Layouts>
-      <PageBanner pageTitle={"About Us"} pageDesc={"our values and vaulted us to the top of our industry."} />
-      
+      <PageBanner pageTitle={t("pageTitle")} pageDesc={t("pageDesc")} />
+
       {/* About-First Start */}
       <section className="gap about-first">
         <div className="container">
           <div className="row">
-            <h2>Construction industry representing the interests of small and medium-sized building companies</h2>
+            <h2>{t('aboutTitle')}</h2>
           </div>
         </div>
         <div className="container">
@@ -21,8 +27,8 @@ const About = () => {
             <div className="col-lg-6">
               <div className="who-we-are">
                 <div>
-                  <h3>Who We Are?</h3>
-                  <p>We are resolute in our mission to not only make a difference to the lives of people today but to also leave a legacy for future generations and the planet we live in. Our portfolio includes dozens of successfully completed projects of houses of different storeys, with high–quality finishes and good repairs. Building houses is our vocation!</p>
+                  <h3>{t('whoWeAreTitle')}</h3>
+                  <p>{t('whoWeAreText')}</p>
                 </div>
                 <figure>
                   <img className="w-100" src="/img/gallery-1.jpeg" alt="About Image One" />
@@ -32,13 +38,14 @@ const About = () => {
             <div className="col-lg-5 offset-lg-1">
               <div className="who-we-are space">
                 <div>
-                  <h3>What's in it for me?</h3>
+                  <h3>{t('whatsInItForMeTitle')}</h3>
                   <ul>
-                    <li><i className="fa-solid fa-circle-dot" /> High performing, low carbon concrete solution</li>
-                    <li><i className="fa-solid fa-circle-dot" /> Value for workers' skills</li>
-                    <li><i className="fa-solid fa-circle-dot" /> Excellent standards in construction</li>
-                    <li><i className="fa-solid fa-circle-dot" /> An inclusive industry</li>
-                    <li><i className="fa-solid fa-circle-dot" /> Don't take our word for it</li>
+                    <li><i className="fa-solid fa-circle-dot" /> {points.concreteSolution}</li>
+                    <li><i className="fa-solid fa-circle-dot" /> {points.workersSkills}</li>
+                    <li><i className="fa-solid fa-circle-dot" /> {points.standards}</li>
+                    <li><i className="fa-solid fa-circle-dot" /> {points.inclusiveIndustry}</li>
+                    <li><i className="fa-solid fa-circle-dot" /> {points.trust}</li>
+
                   </ul>
                 </div>
                 <figure>
@@ -59,52 +66,28 @@ const About = () => {
           <figure>
             <img src="/images/heading-icon.png" alt="Heading Icon" />
           </figure>
-          <span>Plan + Control</span>
-          <h2>How it Works</h2>
+          <span>{t('subtitle')}</span>
+          <h2>{t('title')}</h2>
         </div>
         <div className="container">
-          <figure style={{"position": "relative", "zIndex": "9"}}>
+          <figure style={{ "position": "relative", "zIndex": "9" }}>
             <img className="w-100" src="/img/gallery-2.jpeg" alt="About How It Works" />
           </figure>
         </div>
         <div className="container">
           <div className="row g-0">
-            <div className="col-lg-3 col-md-6 col-sm-12" >
-              <div className="plans">
-                <div className="y-box d-flex-all">
-                  1.
+            {steps.map((step, index) => (
+              <div key={index} className="col-lg-3 col-md-6 col-sm-12">
+                <div className="plans">
+                  <div className="y-box d-flex-all">
+                    {step.number}
+                  </div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
                 </div>
-                <h3>Phase Plan</h3>
-                <p>This step connects the design process and its miles tones with construction.</p>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12" >
-              <div className="plans">
-                <div className="y-box d-flex-all">
-                  2.
-                </div>
-                <h3>Design Pull Plan</h3>
-                <p>We work with the design team to establish a detailed plan for reaching our goals.</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12" >
-              <div className="plans">
-                <div className="y-box d-flex-all">
-                  3.
-                </div>
-                <h3>Coordinated Layout</h3>
-                <p>This process creates a single point of truth: drawings all project.</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12" >
-              <div className="plans">
-                <div className="y-box d-flex-all">
-                  4.
-                </div>
-                <h3>Quality Control</h3>
-                <p>Having geometry worked out in the Layout step, prior to construction.</p>
-              </div>
-            </div>
+            ))}
+
           </div>
         </div>
       </section>
@@ -123,24 +106,16 @@ const About = () => {
             </div>
             <div className="col-lg-6" >
               <div className="data">
-                <h2>Key Benefits</h2>
+                <h2>{t("keyBenefits")}</h2>
                 <ul>
-                  <li>
-                    <i className="fa-solid fa-check" />
-                    <p>Labor expenses are a common target for cost reduction measures in the construction industry</p>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-check" />
-                    <p> A good material management system includes proper communication, scheduling,  and tracking tools.</p>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-check" />
-                    <p>Faster supplies can be used upon delivery to a construction site, the better.</p>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-check" />
-                    <p>Effective material management systems not only ensure that materials are in the right place</p>
-                  </li>
+                  {benefits.map((benefit, index) => {
+                    return (
+                      <li key={index}>
+                        <i className="fa-solid fa-check" />
+                        <p>{benefit}</p>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>
@@ -149,17 +124,17 @@ const About = () => {
       </section>
       {/*About Key Benefits End */}
 
-      
+
     </Layouts>
   );
 };
 export default About;
 
 
-export async function getStaticProps({locale}) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-        ...(await serverSideTranslations(locale, ['counter'])), // Add your namespaces here
+      ...(await serverSideTranslations(locale, ['counter', 'about'])), // Add your namespaces here
     }
   }
 }

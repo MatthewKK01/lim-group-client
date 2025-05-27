@@ -47,10 +47,10 @@ const HeroSlider = () => {
                                 <div className="f-slider-one-data">
                                     <h1>{item.title}</h1>
                                     <p>{item.text}</p>
-                                    <Link href={item.documentId} className="theme-btn">
+                                {item.direction_text &&     <Link href={item.documentId} className="theme-btn">
                                         {item.direction_text}
                                         <i className="fa-solid fa-angles-right" />
-                                    </Link>
+                                    </Link>}
                                 </div>
                             </div>
                         </SwiperSlide>
