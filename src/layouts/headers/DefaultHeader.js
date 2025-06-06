@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import appData from "@data/app.json";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import LanguageSwitcher from "@/src/components/LanguageSwitcher";
 
 const DefaultHeader = ({ contactButton, cartButton}) => {
   const navItems = [];
@@ -70,7 +71,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                     <div className="header-logo">
                       <Link href="/">
                         <figure>
-                          <Image width={40} height={40} src={appData.header.logo.image} alt={appData.header.logo.alt} />
+                          <Image width={150} height={150} src={appData.header.logo.image} alt={appData.header.logo.alt} />
                         </figure>
                       </Link>
                     </div>
@@ -124,7 +125,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
               </div>
             </div>
           </div>
-
+<LanguageSwitcher />
           <div className="mobile-nav mobile-menu" id="mobile-nav">
             <div className="res-log">
               <Link href="/">

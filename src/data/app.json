@@ -2,7 +2,7 @@
     "settings": {
         "siteName": "Limgroup",
         "preloader": {
-            "image": "/img/whatsapp.jpeg",
+            "image": "/images/limgroup.svg",
             "alt": "logo"
         },
         "formspreeURL": "https://formspree.io/f/your_api_key",
@@ -13,7 +13,7 @@
     },
     "header": {
         "logo": {
-            "image": "/img/whatsapp.jpeg",
+            "image": "/images/limgroup.svg",
             "alt": "logo"
         },
       "menu": [
@@ -42,7 +42,7 @@
     },
     "footer": {
         "logo": {
-            "image": "/img/whatsapp.jpeg",
+            "image": "/images/limgroup.svg",
             "alt": "logo"
         },
         "info": {
