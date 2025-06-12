@@ -6,6 +6,7 @@ import PageBanner from "@components/PageBanner";
 const PostsDetail = ( props ) => {
   
   const postData = props.data;
+  console.log(postData)
 
   return (
     <Layouts>

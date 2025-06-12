@@ -127,9 +127,9 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
           </div>
 <LanguageSwitcher />
           <div className="mobile-nav mobile-menu" id="mobile-nav">
-            <div className="res-log">
-              <Link href="/">
-                <img src={appData.header.logo.image} alt={appData.header.logo.alt} />
+          <div className="res-log" style={{ position: "relative", left: "-30px" }}>
+          <Link href="/">
+                <Image width={120} height={120} src={appData.header.logo.image} alt={appData.header.logo.alt} />
               </Link>
             </div>
 

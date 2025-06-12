@@ -25,7 +25,7 @@ const LatestPostsSection = ( { posts } ) => {
                                 <figure>
                                  <img src={`${apiUrl}${item.image[0].url}`} alt={item.title} />
                                 </figure>
-                                <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
+                                <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`} locale='en'>
                                     <i className="fa-solid fa-angles-right" />
                                 </Link>
                             </div>
@@ -34,7 +34,7 @@ const LatestPostsSection = ( { posts } ) => {
                                     <Date dateString={item.createdAt} />
                                 </span>
                                 <h2>
-                                    <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>{item.title}</Link>
+                                    <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`} locale='en'>{item.title}</Link>
                                 </h2>
                                 <div className="blog-author d-flex-all justify-content-start">
                                     {/* <div className="author-img">
