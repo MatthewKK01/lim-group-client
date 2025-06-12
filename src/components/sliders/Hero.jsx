@@ -2,14 +2,19 @@ import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const HeroSlider = () => {
     const [slides, setUsers] = useState([]);
 
+    const router = useRouter();
+    const locale = router.locale;
+    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:1337/api/hero-sliders?populate=*");
+                const response = await fetch(`http://localhost:1337/api/hero-sliders?populate=*&locale=${locale}`);
                 const data = await response.json();
                 setUsers(data); // Update state with fetched data
             } catch (error) {
@@ -18,7 +23,7 @@ const HeroSlider = () => {
         };
 
         fetchData();
-    }, []);
+    }, [locale]);
 
     return (
         <section className="featured-slider-one" style={{ "background": "grey", "minHeight": "100vh" }}>
