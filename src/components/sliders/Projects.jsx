@@ -4,15 +4,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from 'next/router';
 
 
-const ProjectsSlider = ({ projects }) => {
+const ProjectsSlider = () => {
     const [Projects, setProjects] = useState([])
+    const { locale } = useRouter(); 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:1337/api/project?populate=*");
+                const response = await fetch(`http://localhost:1337/api/project?populate=*&locale=${locale}`);
                 const data = await response.json();
                 setProjects(data.data);
             } catch (error) {
@@ -21,7 +23,7 @@ const ProjectsSlider = ({ projects }) => {
         };
 
         fetchData();
-    }, []);
+    }, [locale]);
 
     const { t } = useTranslation('projects');
 

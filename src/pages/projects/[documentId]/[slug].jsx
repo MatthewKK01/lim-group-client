@@ -25,6 +25,10 @@ const ProjectDetail = ( props ) => {
   //   }
   // })
 
+
+  
+
+
   return (
     <Layouts>
       <PageBanner pageTitle={"Project Detail"} pageDesc={"our values and vaulted us to the top of our industry."} />
@@ -135,16 +139,19 @@ const ProjectDetail = ( props ) => {
 };
 export default ProjectDetail;
 
-export async function getStaticPaths() {
+export async function getStaticPaths({locales}) {
   const res = await fetch('http://localhost:1337/api/project');
   const data = await res.json();
 
-  const paths = data.data.map((project) => ({
-    params: {
-      documentId: project.documentId.toString(),
-      slug:project.slug
-    },
-  }));
+  const paths = data.data.flatMap((project) =>
+    locales.map((locale) => ({
+      params: {
+        documentId: project.documentId.toString(),
+        slug: project.slug,
+      },
+      locale,
+    }))
+  );
 
     return {
       paths,
@@ -152,14 +159,16 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:1337/api/project/${params.documentId}?populate=*`)
+export async function getStaticProps({ params,locale }) {
+  const res = await fetch(`http://localhost:1337/api/project/${params.documentId}?populate=*&locale=${locale}`);
+
 const project = await res.json()
 
 
     return {
       props: {
         data: project,
+        locale
       }
     }
 }
