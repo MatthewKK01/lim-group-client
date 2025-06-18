@@ -4,6 +4,9 @@ import Link from "next/link";
 import { sliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CallToActionSection from "@components/sections/CallToAction";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
 
 const ProjectDetail = ( props ) => {
   const postData = props.data.data;
@@ -26,12 +29,13 @@ const ProjectDetail = ( props ) => {
   // })
 
 
+      const { t } = useTranslation("blog-page");
   
 
 
   return (
     <Layouts>
-      <PageBanner pageTitle={"Project Detail"} pageDesc={"our values and vaulted us to the top of our industry."} />
+      <PageBanner pageTitle={t("pageTitle")} pageDesc={t("pageDesc")} />
 
       <section className="gap detail-page">
 
@@ -167,6 +171,7 @@ const project = await res.json()
 
     return {
       props: {
+        ...(await serverSideTranslations(locale, ["call-to-action",'blog-page'])), // ✅ Add translation here
         data: project,
         locale
       }

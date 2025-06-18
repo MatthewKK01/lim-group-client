@@ -30,7 +30,7 @@ const {locale} = useRouter()
                   <h2>{postData.title}</h2>
                   <div className="blog-author d-flex flex-column justify-content-start">
                   <article className="proose">
-                  <BlocksRenderer content={postData.data.content} />;
+                  <BlocksRenderer content={postData.data.content} />
                   </article>
                     <div className="details d-flex justify-content-end">
                       <h3> <span>by</span> LimGroup</h3>
