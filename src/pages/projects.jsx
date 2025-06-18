@@ -57,7 +57,7 @@ export default Portfolio;
 
 export async function getStaticProps({locale}) {
   
-    const url = `http://localhost:1337/api/project?populate=*`
+    const url = `http://localhost:1337/api/project?populate=*&locale=${locale}`
   
 
   const res = await fetch(url)

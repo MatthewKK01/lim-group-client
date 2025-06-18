@@ -2,11 +2,13 @@ import Layouts from "@layouts/Layouts";
 import ImageView from "@components/ImageView";
 import { BlocksRenderer} from '@strapi/blocks-react-renderer';
 import PageBanner from "@components/PageBanner";
+import { useRouter } from 'next/router';
+
 
 const PostsDetail = ( props ) => {
   
   const postData = props.data;
-  console.log(postData)
+const {locale} = useRouter()
 
   return (
     <Layouts>
@@ -78,7 +80,7 @@ const PostsDetail = ( props ) => {
                       <li><a href="#" onClick={(e) => {e.preventDefault();}}>LinkedIn</a></li>
                     </ul>
                 </div>
-
+{/* 
                 <div className="category shape comments">
                   <h3>Comments</h3>
                   <ul>
@@ -135,7 +137,7 @@ const PostsDetail = ( props ) => {
                     </div>
                     <button type="submit" className="theme-btn">Post Comment <i className="fa-solid fa-angles-right"></i></button>
                   </form>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -254,25 +256,29 @@ const PostsDetail = ( props ) => {
 };
 export default PostsDetail;
 
-export async function getStaticPaths() {
+export async function getStaticPaths({locales}) {
   const res = await fetch('http://localhost:1337/api/posts');
   const data = await res.json();
 
-  const paths = data.data.map((post) => ({
-    params: {
-      documentId: post.documentId.toString(),
-      slug: post.title.toLowerCase().replace(/\s+/g, '-'), // or use a dedicated slug field if you have it
-    },
-  }));
+
+  const paths = data.data.flatMap((blog) =>
+    locales.map((locale) => ({
+      params: {
+        documentId: blog.documentId.toString(),
+        slug: blog.slug,
+      },
+      locale,
+    }))
+  );
 
   return {
     paths,
-    fallback: false, // or 'blocking' if you want to generate pages on demand
+    fallback: false,
   };
 }
 
-export async function getStaticProps({ params }) {
-    const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*`)
+export async function getStaticProps({ params,locale }) {
+    const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*&locale=${locale}`)
 
     const postData = await res.json()
     return {

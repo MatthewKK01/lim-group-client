@@ -27,9 +27,9 @@ const LatestPostsSlider = ({ posts }) => {
                             <div className="blog-item col-lg-12">
                                 <span className="blog-post-num">{key + 1}.</span>
                                 <span className="blog-date"><Date dateString={item.date} /></span>
-                                <h2><Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>{item.title}</Link></h2>
+                                <h2><Link href={`/blog/${item.documentId}/${item.slug}`}>{item.title}</Link></h2>
                                 <p>{item.short}</p>
-                                <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
+                                <Link href={`/blog/${item.documentId}/${item.slug}`}>
                                     <i className="fa-solid fa-arrow-up-long"></i>
                                 </Link>
                             </div>

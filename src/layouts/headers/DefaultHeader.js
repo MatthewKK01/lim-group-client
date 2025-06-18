@@ -69,6 +69,8 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                 <div className="col-lg-12">
                   <div className="d-flex-all gap-5">
                     <div className="header-logo">
+<LanguageSwitcher />
+
                       <Link href="/">
                         <figure>
                           <Image width={150} height={150} src={appData.header.logo.image} alt={appData.header.logo.alt} />

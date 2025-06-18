@@ -11,14 +11,14 @@ const PaginationPage = ({ items }) => {
                     <figure>
                     <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
                     </figure>
-                    <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>
+                    <Link href={`/blog/${item.documentId}/${item.slug}`}>
                         <i className="fa-solid fa-angles-right" />
                     </Link>
                 </div>
                 <div className="blog-data">
                     <span className="blog-date"><Date dateString={item.createdAt} /></span>
                     <h2>
-                        <Link href={`/blog/${item.documentId}/${item.title.toLowerCase().split(' ').join('-')}`}>{item.title}</Link>
+                        <Link href={`/blog/${item.documentId}/${item.slug}`}>{item.title}</Link>
                     </h2>
                     <div className="blog-author d-flex-all justify-content-start">
                         
