@@ -110,10 +110,13 @@ const About = () => {
                 <ul>
                   {benefits.map((benefit, index) => {
                     return (
-                      <li key={index}>
-                        <i className="fa-solid fa-check" />
-                        <p>{benefit}</p>
-                      </li>
+                       <li key={index}>
+      <i className="fa-solid fa-check" />
+  <div className="flex flex-col">
+        <span style={{ color: '#006839', fontWeight: 'bold' }}>{benefit.highlight}</span>
+      <p style={{ margin: 0 }}>{benefit.description}</p>
+  </div>
+    </li>
                     )
                   })}
                 </ul>

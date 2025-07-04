@@ -8,7 +8,7 @@ class MyDocument extends Document {
           {/* meta begin */}
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <meta name="robots" content="index, follow" />
+          <meta name="robots" content="noindex, nofollow" />
           <meta name="description" content="ლიმ გრუფი - სანდო გადაწყვეტილება თქვენი სამშენებლო პროექტებისთვის" />
           {/* meta end */}
 

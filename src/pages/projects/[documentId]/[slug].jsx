@@ -1,11 +1,11 @@
 import Layouts from "@layouts/Layouts";
 import PageBanner from "@components/PageBanner";
 import Link from "next/link";
-import { sliderProps } from "@common/sliderProps";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { BlocksRenderer} from '@strapi/blocks-react-renderer';
 import CallToActionSection from "@components/sections/CallToAction";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 
 const ProjectDetail = ( props ) => {
@@ -87,21 +87,27 @@ const ProjectDetail = ( props ) => {
                 </>
                 }
 
+
+
                 {typeof postData != "undefined" &&
                 <div className="row space">
-               
-                  <div className="col-lg-6 col-md-6 col-sm-12"  >
-                    <div className="project-d-detail">
-                      <div className="data">
-                        <h3>{postData.title}</h3>
-                        <p>{postData.value}</p>
-                      </div>
-                      <div className="d-flex-all icon">
-                        <img src={`http://localhost:1337${postData.image[0].url}`} alt={postData.caption} />
-                      </div>
+               <div className="blog-image">
+                  <figure>
+                  <img src={`http://localhost:1337${postData.image[0].url}`} alt={postData.title} />
+                  </figure>
+                </div>
+                <div className="blog-data">
+                  {/* <span className="blog-date"><Date dateString={postData.date} /></span> */}
+
+                  <div className="blog-author d-flex flex-column justify-content-start">
+                  <article className="proose">
+                  <BlocksRenderer content={postData.content} />
+                  </article>
+                    <div className="details d-flex justify-content-end">
+                      <h3> <span>by</span> LimGroup</h3>
                     </div>
                   </div>
-                  
+                </div>
                 </div>
                 }
               </div>

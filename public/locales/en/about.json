@@ -15,32 +15,46 @@
     "subtitle": "Plan + Control",
     "title": "How it Works",
     "steps": [
-      {
-        "number": "1.",
-        "title": "Phase Plan",
-        "description": "This step connects the design process and its milestones with construction."
-      },
-      {
-        "number": "2.",
-        "title": "Design Pull Plan",
-        "description": "We work with the design team to establish a detailed plan for reaching our goals."
-      },
-      {
-        "number": "3.",
-        "title": "Coordinated Layout",
-        "description": "This process creates a single point of truth: drawings all project."
-      },
-      {
-        "number": "4.",
-        "title": "Quality Control",
-        "description": "Having geometry worked out in the Layout step, prior to construction."
-      }
-    ],
+  {
+    "number": "1.",
+    "title": "Planning and Project Design",
+    "description": "This step connects the design process and its stages to the construction phase."
+  },
+  {
+    "number": "2.",
+    "title": "Design and Engineering",
+    "description": "We collaborate with the design team to create a detailed plan to achieve the goals."
+  },
+  {
+    "number": "3.",
+    "title": "Construction Execution",
+    "description": "This process creates a single source of truth: drawings for the entire project."
+  },
+  {
+    "number": "4.",
+    "title": "Completion and Delivery",
+    "description": "Geometry works at the layout stage, before construction begins."
+  }
+],
+
     "keyBenefits": "Key Benefits",
     "benefits": [
-      "Labor expenses are a common target for cost reduction measures in the construction industry",
-      "A good material management system includes proper communication, scheduling, and tracking tools.",
-      "Faster supplies can be used upon delivery to a construction site, the better.",
-      "Effective material management systems not only ensure that materials are in the right place"
-    ]
+  {
+    "highlight": "1. Cost savings",
+    "description": "Experience and well-planned processes reduce unnecessary expenses."
+  },
+  {
+    "highlight": "2. Reliable suppliers",
+    "description": "The company has experienced and stable partners, ensuring timely delivery of construction materials to the site."
+  },
+  {
+    "highlight": "3. Timely project completion",
+    "description": "Every stage is pre-planned and strictly monitored."
+  },
+  {
+    "highlight": "4. Simple processes for clients",
+    "description": "The company takes care of everything – you receive the finished result, on time and with quality."
+  }
+]
+
 }
