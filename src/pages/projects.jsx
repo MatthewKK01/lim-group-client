@@ -39,7 +39,7 @@ const Portfolio = (props) => {
               <div className="col-lg-6">
                 <div className="data">
                   <figure>
-                    <img  src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
+                    <img  src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
                   </figure>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default Portfolio;
 
 export async function getStaticProps({locale}) {
   
-    const url = `http://localhost:1337/api/project?populate=*&locale=${locale}`
+    const url = `http://91.99.179.84:1337/api/project?populate=*&locale=${locale}`
   
 
   const res = await fetch(url)

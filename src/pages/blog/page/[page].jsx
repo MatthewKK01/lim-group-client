@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps( { params } ) {
     const page = Number(params?.page) || 1
-    const response = await fetch("http://localhost:1337/api/posts?populate=*")
+    const response = await fetch("http://91.99.179.84:1337/api/posts?populate=*")
     const posts = await response.json();
     const total = 10;
   

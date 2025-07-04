@@ -14,7 +14,7 @@ const HeroSlider = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:1337/api/hero-sliders?populate=*&locale=${locale}`);
+                const response = await fetch(`http://91.99.179.84:1337/api/hero-sliders?populate=*&locale=${locale}`);
                 const data = await response.json();
                 setUsers(data); // Update state with fetched data
             } catch (error) {
@@ -39,12 +39,12 @@ const HeroSlider = () => {
                                     {/* Mobile version - will load for viewports 600px and below */}
                                     <source
                                         media="(max-width: 600px)"
-                                        srcSet={`http://localhost:1337${item.mobile_img[0].url}`}
+                                        srcSet={`http://91.99.179.84:1337${item.mobile_img[0].url}`}
                                     />
 
                                     {/* Desktop version - fallback */}
                                     <img
-                                        src={`http://localhost:1337${item.image[0].url}`}
+                                        src={`http://91.99.179.84:1337${item.image[0].url}`}
                                         alt={item.title}
                                     />
                                 </picture>

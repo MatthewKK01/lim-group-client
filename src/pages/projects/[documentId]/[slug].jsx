@@ -93,7 +93,7 @@ const ProjectDetail = ( props ) => {
                 <div className="row space">
                <div className="blog-image">
                   <figure>
-                  <img src={`http://localhost:1337${postData.image[0].url}`} alt={postData.title} />
+                  <img src={`http://91.99.179.84:1337${postData.image[0].url}`} alt={postData.title} />
                   </figure>
                 </div>
                 <div className="blog-data">
@@ -150,7 +150,7 @@ const ProjectDetail = ( props ) => {
 export default ProjectDetail;
 
 export async function getStaticPaths({locales}) {
-  const res = await fetch('http://localhost:1337/api/project');
+  const res = await fetch('http://91.99.179.84:1337/api/project');
   const data = await res.json();
 
   const paths = data.data.flatMap((project) =>
@@ -170,7 +170,7 @@ export async function getStaticPaths({locales}) {
 }
 
 export async function getStaticProps({ params,locale }) {
-  const res = await fetch(`http://localhost:1337/api/project/${params.documentId}?populate=*&locale=${locale}`);
+  const res = await fetch(`http://91.99.179.84:1337/api/project/${params.documentId}?populate=*&locale=${locale}`);
 
 const project = await res.json()
 

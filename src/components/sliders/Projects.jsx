@@ -14,7 +14,7 @@ const ProjectsSlider = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:1337/api/project?populate=*&locale=${locale}`);
+                const response = await fetch(`http://91.99.179.84:1337/api/project?populate=*&locale=${locale}`);
                 const data = await response.json();
                 setProjects(data.data);
             } catch (error) {
@@ -47,7 +47,7 @@ const ProjectsSlider = () => {
                         <SwiperSlide key={`pjs-slide-${key}`} className="swiper-slide">
                             <div className="project-post">
                                 <figure>
-                                    <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
+                                    <img src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
                                 </figure>
                                 <div className="project-data">
                                     <h3><Link href={`/projects/${item.documentId}/${item.slug}`}>{item.title}</Link></h3>

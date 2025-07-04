@@ -9,7 +9,7 @@ const PaginationPage = ({ items }) => {
             <div className="blog-post">
                 <div className="blog-image">
                     <figure>
-                    <img src={`http://localhost:1337${item.image[0].url}`} alt={item.title} />
+                    <img src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
                     </figure>
                     <Link href={`/blog/${item.documentId}/${item.slug}`}>
                         <i className="fa-solid fa-angles-right" />

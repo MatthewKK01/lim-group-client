@@ -7,7 +7,7 @@ const LatestPostsSection = ( { posts } ) => {
         const {t} = useTranslation("latest-posts")
         
 
-    const apiUrl =`http://localhost:1337`
+    const apiUrl =`http://91.99.179.84:1337`
     return (
         <section className="gap no-top blog-style-one">
             <div className="heading">

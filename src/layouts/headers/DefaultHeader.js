@@ -113,7 +113,7 @@ const DefaultHeader = ({ contactButton, cartButton}) => {
                           </a>
                         
                         
-                          <Link href="http://localhost:1337/admin/auth/login" target="_blank" className="theme-btn simple">
+                          <Link href="http://91.99.179.84:1337/admin/auth/login" target="_blank" className="theme-btn simple">
                             Login
                           </Link>
                         

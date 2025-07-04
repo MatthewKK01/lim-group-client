@@ -22,7 +22,7 @@ const {locale} = useRouter()
               <div className="blog-post ">
                 <div className="blog-image">
                   <figure>
-                  <img src={`http://localhost:1337${postData.data.image[0].url}`} alt={postData.title} />
+                  <img src={`http://91.99.179.84:1337${postData.data.image[0].url}`} alt={postData.title} />
                   </figure>
                 </div>
                 <div className="blog-data">
@@ -257,7 +257,7 @@ const {locale} = useRouter()
 export default PostsDetail;
 
 export async function getStaticPaths({locales}) {
-  const res = await fetch('http://localhost:1337/api/posts');
+  const res = await fetch('http://91.99.179.84:1337/api/posts');
   const data = await res.json();
 
 
@@ -278,7 +278,7 @@ export async function getStaticPaths({locales}) {
 }
 
 export async function getStaticProps({ params,locale }) {
-    const res = await fetch(`http://localhost:1337/api/posts/${params.documentId}?populate=*&locale=${locale}`)
+    const res = await fetch(`http://91.99.179.84:1337/api/posts/${params.documentId}?populate=*&locale=${locale}`)
 
     const postData = await res.json()
     return {
