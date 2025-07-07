@@ -1,8 +1,12 @@
 import Link from "next/link";
 import appData from "@data/app.json";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const DefaultFooter = () => {
+
+    const { locale } = useRouter();
+
   return (
     <footer className="footer-style-one">
         <div className="footer-p-1">
@@ -26,7 +30,7 @@ const DefaultFooter = () => {
                     <p>ტექსტი <span>+995 577 29 92 49</span></p>
                 </div>
                 <Link href="/contact" className="theme-btn">
-                    მიიღე კონსულტაცია <i className="fa-solid fa-angles-right" />
+                    {locale === 'en' ? "Get Consulting" : "მიიღე კონსულტაცია"} <i className="fa-solid fa-angles-right" />
                 </Link>
             </div>
             </div>
@@ -37,13 +41,13 @@ const DefaultFooter = () => {
             <div className="row">
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="footer-col">
-                    <h3>ინფორმაცია</h3>
-                    <p>ჩვენ წარმატებით ვასრულებთ ნებისმიერი სირთულის სამშენებლო პროექტებს, ვთავაზობთ გრძელვადიან გარანტიებს და მუდმივად ვიღრმავებთ ცოდნას თანამედროვე ტექნოლოგიებში.</p>
+                    <h3>{locale === "ka" ? "ინფორმაცია" : "Information"}</h3>
+                    <p>{locale ==="en" ? "We successfully complete construction projects of any complexity, offer long-term guarantees, and constantly deepen our knowledge of modern technologies." :"ჩვენ წარმატებით ვასრულებთ ნებისმიერი სირთულის სამშენებლო პროექტებს, ვთავაზობთ გრძელვადიან გარანტიებს და მუდმივად ვიღრმავებთ ცოდნას თანამედროვე ტექნოლოგიებში."}</p>
                 </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="footer-col">
-                    <h3>Contact</h3>
+                    <h3>{ locale === "en" ? "Contact" : "კონტაქტ"}</h3>
                     <ul>
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="79" height="94" viewBox="0 0 79 94"> <defs> <clipPath id="clip-location_B"> <rect width="79" height="94"/> </clipPath> </defs> <g id="location_B" data-name="location B" clipPath="url(#clip-location_B)"> <path id="Path_121" data-name="Path 1" d="M962.855,575.375a3,3,0,0,1-2.1-.861l-26.263-25.826c-11.03-11.993-13.791-27.653-7.492-42a38.334,38.334,0,0,1,34.959-23.117l1.346.009c15.262,0,27.868,8.452,33.722,22.609,6.152,14.878,3.046,31.554-7.912,42.485-.528.555-24.064,25.75-24.064,25.75a3,3,0,0,1-2.129.951Zm-.9-85.8A31.924,31.924,0,0,0,932.49,509.1c-5.313,12.1-2.954,25.342,6.31,35.419l23.963,23.559c15.027-16.085,20.179-21.585,22.274-23.488l-.164-.165c9.233-9.209,11.825-23.318,6.605-35.944a29.677,29.677,0,0,0-28.177-18.9Z" transform="translate(-922.725 -482.15)"/> <path id="Path_23" data-name="Path 2" d="M15,6a9,9,0,1,0,9,9,9.01,9.01,0,0,0-9-9m0-6A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z" transform="translate(25 26)"/> </g> </svg>
@@ -62,8 +66,8 @@ const DefaultFooter = () => {
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Signup for our weekly newsletter to get the latest news.</p>
+                    <h3>{locale === "en" ? "Newsletter" : "გამოიწერე"}</h3>
+                    <p>{ locale ==="en" ? "Signup for our weekly newsletter to get the latest news." : "გამოიწერეთ ჩვენი ყოველკვირეული საინფორმაციო ბიულეტენი, რათა მიიღოთ უახლესი ამბები."}</p>
                     <form action={appData.settings.mailchimp.url} method="post" target="_blank">
                         <input type="email" name="EMAIL" placeholder="Enter your email." required />
                         <input type="hidden" name={appData.settings.mailchimp.key} />
