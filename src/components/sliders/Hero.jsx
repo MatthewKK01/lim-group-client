@@ -14,7 +14,7 @@ const HeroSlider = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://91.99.179.84:1337/api/hero-sliders?populate=*&locale=${locale}`);
+                const response = await fetch(`/api/hero-sliders?locale=${locale}`);
                 const data = await response.json();
                 setUsers(data); // Update state with fetched data
             } catch (error) {

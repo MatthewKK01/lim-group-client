@@ -14,7 +14,7 @@ const ProjectsSlider = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://91.99.179.84:1337/api/project?populate=*&locale=${locale}`);
+                const response = await fetch(`api/project?locale=${locale}`);
                 const data = await response.json();
                 setProjects(data.data);
             } catch (error) {
