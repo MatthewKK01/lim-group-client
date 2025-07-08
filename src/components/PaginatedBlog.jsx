@@ -2,6 +2,8 @@ import Link from "next/link";
 import Date from '@library/date';
 
 const PaginationPage = ({ items }) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     return (
       <>
         {items.data.map((item, index) => (
@@ -9,7 +11,7 @@ const PaginationPage = ({ items }) => {
             <div className="blog-post">
                 <div className="blog-image">
                     <figure>
-                    <img src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
+                    <img src={`${apiUrl}${item.image[0].url}`} alt={item.title} />
                     </figure>
                     <Link href={`/blog/${item.documentId}/${item.slug}`}>
                         <i className="fa-solid fa-angles-right" />

@@ -27,12 +27,8 @@ const AboutSection = () => {
                   <p>
                     {t("text")}
                   </p>
-                  <figure>
-                    <img className="light-icon" src={Data.signature.light} alt={Data.signature.alt} />
-                    <img className="dark-icon" src={Data.signature.dark} alt={Data.signature.alt} />
-                  </figure>
-                  <h3>{t("name")}</h3>
-                  <h4>{t("role")}</h4>
+                
+              
                 </div>
               </div>
             </div>

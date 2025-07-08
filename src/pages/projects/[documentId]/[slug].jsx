@@ -28,6 +28,8 @@ const ProjectDetail = ( props ) => {
   //   }
   // })
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 
       const { t } = useTranslation("blog-page");
   
@@ -92,8 +94,8 @@ const ProjectDetail = ( props ) => {
                 {typeof postData != "undefined" &&
                 <div className="row space">
                <div className="blog-image">
-                  <figure>
-                  <img src={`http://91.99.179.84:1337${postData.image[0].url}`} alt={postData.title} />
+                  <figure className="w-50"> 
+                  <img className="w-100" src={`${apiUrl}${postData.image[0].url}`} alt={postData.title} />
                   </figure>
                 </div>
                 <div className="blog-data">
@@ -150,7 +152,9 @@ const ProjectDetail = ( props ) => {
 export default ProjectDetail;
 
 export async function getStaticPaths({locales}) {
-  const res = await fetch('http://91.99.179.84:1337/api/project');
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  const res = await fetch(`${apiUrl}/api/project`);
   const data = await res.json();
 
   const paths = data.data.flatMap((project) =>
@@ -170,7 +174,9 @@ export async function getStaticPaths({locales}) {
 }
 
 export async function getStaticProps({ params,locale }) {
-  const res = await fetch(`http://91.99.179.84:1337/api/project/${params.documentId}?populate=*&locale=${locale}`);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  const res = await fetch(`${apiUrl}/api/project/${params.documentId}?populate=*&locale=${locale}`);
 
 const project = await res.json()
 

@@ -34,7 +34,9 @@ const Home1 = (props) => {
 export default Home1;
 
 export async function getStaticProps({locale}) {
-  const response = await fetch(`http://91.99.179.84:1337/api/posts?populate=*&locale=${locale}`)
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  const response = await fetch(`${apiUrl}/api/posts?populate=*&locale=${locale}`)
   const data = await response.json();
   
   const allPosts = data.data;

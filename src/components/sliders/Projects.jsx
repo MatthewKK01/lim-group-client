@@ -10,6 +10,8 @@ import { useRouter } from 'next/router';
 const ProjectsSlider = () => {
     const [Projects, setProjects] = useState([])
     const { locale } = useRouter(); 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +49,7 @@ const ProjectsSlider = () => {
                         <SwiperSlide key={`pjs-slide-${key}`} className="swiper-slide">
                             <div className="project-post">
                                 <figure>
-                                    <img src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
+                                    <img src={`${apiUrl}${item.image[0].url}`} alt={item.title} />
                                 </figure>
                                 <div className="project-data">
                                     <h3><Link href={`/projects/${item.documentId}/${item.slug}`}>{item.title}</Link></h3>

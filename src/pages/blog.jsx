@@ -9,6 +9,8 @@ import { useTranslation } from 'next-i18next';
 
 
 const Blog = ( { posts, totalPosts, currentPage } ) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 
   const {t} = useTranslation("blog-page")
 
@@ -46,9 +48,10 @@ export default Blog;
 
 
 export async function getStaticProps({locale}) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 
-  const response = await fetch(`http://91.99.179.84:1337/api/posts?populate=*&locale=${locale}`)
+  const response = await fetch(`${apiUrl}/api/posts?populate=*&locale=${locale}`)
   const posts = await response.json();
   const total = 10
 

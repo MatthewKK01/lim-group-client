@@ -8,7 +8,9 @@ import { useRouter } from 'next/router';
 const PostsDetail = ( props ) => {
   
   const postData = props.data;
-const {locale} = useRouter()
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+
 
   return (
     <Layouts>
@@ -22,7 +24,7 @@ const {locale} = useRouter()
               <div className="blog-post ">
                 <div className="blog-image">
                   <figure>
-                  <img src={`http://91.99.179.84:1337${postData.data.image[0].url}`} alt={postData.title} />
+                  <img  src={`${apiUrl}${postData.data.image[0].url}`} alt={postData.title} />
                   </figure>
                 </div>
                 <div className="blog-data">
@@ -257,7 +259,9 @@ const {locale} = useRouter()
 export default PostsDetail;
 
 export async function getStaticPaths({locales}) {
-  const res = await fetch('http://91.99.179.84:1337/api/posts');
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  const res = await fetch(`${apiUrl}/api/posts`);
   const data = await res.json();
 
 
@@ -278,7 +282,9 @@ export async function getStaticPaths({locales}) {
 }
 
 export async function getStaticProps({ params,locale }) {
-    const res = await fetch(`http://91.99.179.84:1337/api/posts/${params.documentId}?populate=*&locale=${locale}`)
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    const res = await fetch(`${apiUrl}/api/posts/${params.documentId}?populate=*&locale=${locale}`)
 
     const postData = await res.json()
     return {

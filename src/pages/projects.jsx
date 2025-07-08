@@ -9,6 +9,8 @@ import { useTranslation } from "next-i18next";
 const Portfolio = (props) => {
 
   const {t} = useTranslation("projects-banner")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 
   return (
     <Layouts>
@@ -39,7 +41,7 @@ const Portfolio = (props) => {
               <div className="col-lg-6">
                 <div className="data">
                   <figure>
-                    <img  src={`http://91.99.179.84:1337${item.image[0].url}`} alt={item.title} />
+                    <img  src={`${apiUrl}${item.image[0].url}`} alt={item.title} />
                   </figure>
                 </div>
               </div>
@@ -56,8 +58,9 @@ const Portfolio = (props) => {
 export default Portfolio;
 
 export async function getStaticProps({locale}) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   
-    const url = `http://91.99.179.84:1337/api/project?populate=*&locale=${locale}`
+    const url = `${apiUrl}/api/project?populate=*&locale=${locale}`
   
 
   const res = await fetch(url)

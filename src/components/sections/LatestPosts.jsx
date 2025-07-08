@@ -5,9 +5,8 @@ import Link from "next/link";
 
 const LatestPostsSection = ( { posts } ) => {
         const {t} = useTranslation("latest-posts")
-        
-
-    const apiUrl =`http://91.99.179.84:1337`
+    
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     return (
         <section className="gap no-top blog-style-one">
             <div className="heading">

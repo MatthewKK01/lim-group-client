@@ -9,6 +9,9 @@ const HeroSlider = () => {
 
     const router = useRouter();
     const locale = router.locale;
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     
 
     useEffect(() => {
@@ -39,12 +42,12 @@ const HeroSlider = () => {
                                     {/* Mobile version - will load for viewports 600px and below */}
                                     <source
                                         media="(max-width: 600px)"
-                                        srcSet={`http://91.99.179.84:1337${item.mobile_img[0].url}`}
+                                        srcSet={`${apiUrl}${item.mobile_img[0].url}`}
                                     />
 
                                     {/* Desktop version - fallback */}
                                     <img
-                                        src={`http://91.99.179.84:1337${item.image[0].url}`}
+                                        src={`${apiUrl}${item.image[0].url}`}
                                         alt={item.title}
                                     />
                                 </picture>

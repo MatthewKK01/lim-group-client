@@ -49,8 +49,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps( { params } ) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const page = Number(params?.page) || 1
-    const response = await fetch("http://91.99.179.84:1337/api/posts?populate=*")
+    const response = await fetch(`${apiUrl}/api/posts?populate=*`)
     const posts = await response.json();
     const total = 10;
   
