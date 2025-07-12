@@ -32,7 +32,7 @@ const About = () => {
                   <p>{t('whoWeAreText')}</p>
                 </div>
                 <figure>
-                  <img className="w-100" src="/img/gallery-1.jpeg" alt="About Image One" />
+                  <img className="w-100" src="/img/DJI_0834.jpg" alt="About Image One" />
                 </figure>
               </div>
             </div>
@@ -50,7 +50,7 @@ const About = () => {
                   </ul>
                 </div>
                 <figure>
-                  <img className="w-100" src="/img/gallery-3.jpeg" alt="About Image Two" />
+                  <img className="w-100" src="/img/IMG_2512.jpg" alt="About Image Two" />
                 </figure>
               </div>
             </div>
