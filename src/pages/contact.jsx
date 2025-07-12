@@ -5,6 +5,8 @@ import appData from "@data/app.json";
 import { Formik } from 'formik';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import Image from "next/image";
+
 
 
 const Contact = () => {
@@ -197,7 +199,7 @@ const Contact = () => {
         <section className="contact-faqs">
             <div className="heading">
                 <figure>
-                    <img src="/images/heading-icon.png" alt="Heading Icon" />
+                    <Image width={150} height={150} src="/img/logo.png" alt="heading-icon" />
                 </figure>
                 
                 <span>{t('faq_label')}</span>

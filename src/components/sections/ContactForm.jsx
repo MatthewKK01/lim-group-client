@@ -2,6 +2,7 @@ import Data from "@data/sections/contact-form.json";
 import Accordion from 'react-bootstrap/Accordion';
 import appData from "@data/app.json";
 import { Formik } from 'formik';
+import Image from "next/image";
 
 const ContactFormSection = () => {
   const styles = {
@@ -14,7 +15,7 @@ const ContactFormSection = () => {
     <section className="contact-form-one">
         <div className="heading">
             <figure>
-                <img src="/images/heading-icon.png" alt="heading-icon" />
+                    <Image width={150} height={150} src="/img/logo.png" alt="heading-icon" />
             </figure>
             <span>{Data.subtitle}</span>
             <h2>{Data.title}</h2>

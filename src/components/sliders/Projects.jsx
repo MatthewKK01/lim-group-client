@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from 'next/router';
+import Image from "next/image";
 
 
 const ProjectsSlider = () => {
@@ -35,7 +36,7 @@ const ProjectsSlider = () => {
           
             <div className="heading">
                 <figure>
-                    <img src="/img/heading-icon.png" alt="Heading Icon" />
+                    <Image width={150} height={150} src="/img/logo.png" alt="heading-icon" />
                 </figure>
                 <span>{t("subtitle")}</span>
                 <h2>{t("title")}</h2>

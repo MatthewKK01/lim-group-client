@@ -1,6 +1,7 @@
 import Data from "@data/sections/latest-posts.json";
 import Date from '@library/date';
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import Link from "next/link";
 
 const LatestPostsSection = ( { posts } ) => {
@@ -11,7 +12,7 @@ const LatestPostsSection = ( { posts } ) => {
         <section className="gap no-top blog-style-one">
             <div className="heading">
                 <figure>
-                    <img src="/img/heading-icon.png" alt="heading-icon" />
+                    <Image width={150} height={150} src="/img/logo.png" alt="heading-icon" />
                 </figure>
                 <span>{t("subtitle")}</span>
                 <h2>{t("title")}</h2>

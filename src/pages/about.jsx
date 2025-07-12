@@ -3,6 +3,7 @@ import PageBanner from "@components/PageBanner";
 import CountersSection from "@components/sections/Counters";
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Image from "next/image";
 
 const About = () => {
 
@@ -64,7 +65,7 @@ const About = () => {
       <section className="gap about-how-it-works light-bg-color">
         <div className="heading">
           <figure>
-            <img src="/images/heading-icon.png" alt="Heading Icon" />
+                    <Image width={150} height={150} src="/img/logo.png" alt="heading-icon" />
           </figure>
           <span>{t('subtitle')}</span>
           <h2>{t('title')}</h2>
